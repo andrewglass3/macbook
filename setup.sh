@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Check if Homebrew is installed
-which -s brew
+command -v brew
 if [[ $? != 0 ]] ; then
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users\/$USER/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -9,16 +9,17 @@ else
     brew update
 fi
 
-sudo chown -R $(whoami) /opt/homebrew
+sudo chown -R "$(whoami)" /opt/homebrew
 
 #Install Rosetta as Bluejeans and Signal require it on M1 Macs
-if [[`uname -m` == 'arm64']], then
+if [[ $(uname -m) == 'arm64' ]] ; then
    echo 'Installing Rosetta for M1 platform as needed for Bluejeans and Signal'
    /usr/sbin/softwareupdate --install-rosetta --agree-to-licence
-   if [ $? -eq 0]; then
+   if [ $? -eq 0 ]; then
       echo 'Rosetta has been installed - all is groovy'
     else
       echo 'Rosetta install failed - please install manually'
+    fi
 else
     echo 'Plaform is not M1 - continuing'
 fi
@@ -64,13 +65,13 @@ brew install aws-okta
 
 
 #Install fonts 
-cd ~
+cd "$HOME" || exit
 git clone https://github.com/powerline/fonts.git
-cd fonts
+cd fonts || exit
 ./install.sh
 
 #Install oh my zsh
-cd ~
+cd "$HOME" || exit
 wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 chmod +x install.sh
 ./install.sh --unattended
@@ -79,8 +80,8 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 
 #Add zsh autosuggestions
 #Source zshrc to populate zsh_custom variable
-source ~/.zshrc
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+source "$HOME"/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM"/plugins/zsh-autosuggestions
 
 cat <<EOF >> ~/.zshrc
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
