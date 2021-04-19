@@ -39,32 +39,34 @@ brew install --cask skype
 brew install --cask wireshark
 brew install --cask firefox
 brew install --cask signal
-brew install --cask surfshark
 brew install --cask viscosity
 brew install --cask royal-tsx
 brew install zsh zsh-completions
 brew install zsh-syntax-highlighting
 brew install authy
 brew install teamviewer
-brew install bitwarden
-brew install spectacle
+#brew install bitwarden > no longer required switched to 1password
+brew install 1password
+#brew install spectacle > no longer required switched to rectangle
+brew install rectangle
 brew install htop
 brew install homebrew/cask-drivers/logitech-options
 brew install tfenv
 brew install awscli
 brew install pyenv
-brew install packer 
+brew install packer
 brew install terragrunt
-brew install ack 
+brew install ack
 brew install azure-cli
 brew install ncdu
 brew install tree
 brew install aws-okta
+brew install atom
+brew install python3
 
 
 
-
-#Install fonts 
+#Install fonts
 cd "$HOME" || exit
 git clone https://github.com/powerline/fonts.git
 cd fonts || exit
@@ -103,5 +105,3 @@ fi
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 EOF
-
-
