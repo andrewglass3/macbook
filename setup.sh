@@ -64,6 +64,21 @@ brew install aws-okta
 brew install atom
 brew install python3
 
+#Install Atom IDE packages
+##Python Packages
+apm install atom-ide-base
+apm install ide-python
+apm install atom-ide-debugger
+apm install atom-ide-console
+
+#Terraform syntax highlighting - https://github.com/cmur2/language-terraform
+apm install language-terraform
+
+#Platformio Terminal for Atom IDE - https://github.com/platformio/platformio-atom-ide-terminal
+apm install platformio-ide-terminal
+
+## Teletype - Remote Pair Programming Tool - https://github.com/atom/teletype
+apm install teletype
 
 
 #Install fonts
